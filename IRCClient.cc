@@ -118,7 +118,7 @@ int main( int   argc,
 	GtkWidget *myMessage;
 	GtkWidget *label;
 	gtk_init (&argc, &argv);
-	label = gtk_label_new("Username");
+	//label = gtk_label_new("Username");
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title (GTK_WINDOW (window), "Paned Windows");
 	g_signal_connect (window, "destroy",
@@ -145,7 +145,10 @@ int main( int   argc,
 	list = create_list ("Rooms", list_rooms);
 	gtk_table_attach_defaults (GTK_TABLE (table), list, 1, 2, 0, 2);
 	gtk_widget_show (list);
-
+	
+	label = gtk_label_new("Username");
+	gtk_table_attach_defaults(GTK_TABLE(table), label, 8,8,8,8);
+	gtk_widget_show(label);
 	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
 	messages = create_text ("Server Message List");
 	gtk_table_attach_defaults (GTK_TABLE (table), messages, 2, 5, 0, 5);
