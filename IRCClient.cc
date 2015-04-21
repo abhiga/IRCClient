@@ -147,12 +147,12 @@ int main( int   argc,
 	gtk_widget_show (list);
 
 	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
-	messages = create_text ("");
+	messages = create_text ("Server Message List");
 	gtk_table_attach_defaults (GTK_TABLE (table), messages, 2, 5, 0, 5);
 	gtk_widget_show (messages);
 	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
 
-	myMessage = create_text ("");
+	myMessage = create_text ("Type your message here.");
 	gtk_table_attach_defaults (GTK_TABLE (table), myMessage, 0, 5, 5, 7);
 	gtk_widget_show (myMessage);
 
