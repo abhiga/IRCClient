@@ -10,7 +10,7 @@ void update_list_rooms() {
 
     /* Add some messages to the window */
     for (i = 0; i < 10; i++) {
-        gchar *msg = g_strdup_printf ("Rooms %d", i);
+        gchar *msg = g_strdup_printf ("Room %d", i);
         gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
         gtk_list_store_set (GTK_LIST_STORE (list_rooms), 
 	                    &iter,
