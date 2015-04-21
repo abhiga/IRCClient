@@ -82,3 +82,5 @@
  4 files changed, 4 insertions(+), 2 deletions(-)
  create mode 100644 .entry.c.swp
  rewrite IRCClient (70%)
+[master 2dfe8b0] Make IRCclient
+ 3 files changed, 9 insertions(+), 2 deletions(-)

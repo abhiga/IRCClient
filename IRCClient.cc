@@ -147,7 +147,7 @@ int main( int   argc,
 	gtk_widget_show (list);
 	
 	label = gtk_label_new("Username");
-	gtk_table_attach_defaults(GTK_TABLE(table), label, 8,8,8,8);
+	gtk_table_attach_defaults(GTK_TABLE(table), label, 6,7,6,7);
 	gtk_widget_show(label);
 	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
 	messages = create_text ("Server Message List");
