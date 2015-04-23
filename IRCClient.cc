@@ -120,7 +120,7 @@ int main( int   argc,
 	gtk_init (&argc, &argv);
 	//label = gtk_label_new("Username");
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_title (GTK_WINDOW (window), "Paned Windows");
+	gtk_window_set_title (GTK_WINDOW (window), "IRC Client");
 	g_signal_connect (window, "destroy",
 			G_CALLBACK (gtk_main_quit), NULL);
 	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
@@ -165,6 +165,10 @@ int main( int   argc,
 	// Add send button. Use columns 0 to 1 (exclusive) and rows 4 to 7 (exclusive)
 	GtkWidget *send_button = gtk_button_new_with_label ("Send Message");
 	gtk_table_attach_defaults(GTK_TABLE (table), send_button, 0, 1, 5, 6); 
+	gtk_widget_show (send_button);
+
+	GtkWidget *create_room = gtk_button_new_with_label ("Send Message");
+	gtk_table_attach_defaults(GTK_TABLE (table), send_button, 0, 1, 5, 6);
 	gtk_widget_show (send_button);
 
 	gtk_widget_show (table);
