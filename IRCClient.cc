@@ -109,6 +109,9 @@ static GtkWidget *create_text( const char * initialText )
 	return scrolled_window;
 }
 static void croom_clicked(GtkWidget *button, gpointer data){
+	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	printf("%s\n", pass);
+
 }
 
 int main( int   argc,
