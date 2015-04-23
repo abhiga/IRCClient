@@ -150,7 +150,7 @@ int main( int   argc,
 	gtk_widget_show (list);
 	
 	label = gtk_label_new("Username");
-	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,5,5);
+	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,5,6);
 	gtk_widget_show(label);
 	label = gtk_label_new("Password");
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,6,7);
