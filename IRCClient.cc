@@ -117,6 +117,9 @@ int main( int   argc,
 	GtkWidget *messages;
 	GtkWidget *myMessage;
 	GtkWidget *label;
+	GtkWidget *croom;
+	GtkWidget *user;
+	GtkWidget *pass;
 	gtk_init (&argc, &argv);
 	//label = gtk_label_new("Username");
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -147,7 +150,7 @@ int main( int   argc,
 	gtk_widget_show (list);
 	
 	label = gtk_label_new("Username");
-	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,5,6);
+	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,5,5);
 	gtk_widget_show(label);
 	label = gtk_label_new("Password");
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,6,7);
@@ -174,6 +177,8 @@ int main( int   argc,
 	GtkWidget *leave_room = gtk_button_new_with_label ("Leave Room");
 	gtk_table_attach_defaults(GTK_TABLE (table), leave_room, 1, 2, 5,6);
 	gtk_widget_show (leave_room);
+
+
 
 	gtk_widget_show (table);
 	gtk_widget_show (window);
