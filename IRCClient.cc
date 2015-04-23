@@ -113,7 +113,7 @@ static void croom_clicked(GtkWidget *button, gpointer data){
 	printf("%s\n", pass);
 
 }
-static void signup_clicked(GtkWidget *button, gpointer data, gpointer data1){
+static void signup_clicked(GtkWidget *button, gpointer data){
 	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s\n", pass);
 }
@@ -196,7 +196,7 @@ int main( int   argc,
 	gtk_widget_show (user);
 	
 	pass = gtk_entry_new ();
-	gtk_entry_set_visibility(GTK_ENTRY(pass), FALSE);
+	//gtk_entry_set_visibility(GTK_ENTRY(pass), FALSE);
 	gtk_table_attach_defaults(GTK_TABLE (table), pass, 3,4, 6, 7);
 	gtk_widget_show (pass);
 
