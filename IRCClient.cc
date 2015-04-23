@@ -113,7 +113,7 @@ static void croom_clicked(GtkWidget *button, gpointer data){
 	printf("%s\n", pass);
 
 }
-static void signup_clicked(GtkWidget *button, gpointer data){
+static void signup_clicked(GtkWidget *button, gpointer data, gpointer data1){
 }
 int main( int   argc,
 		char *argv[] )
