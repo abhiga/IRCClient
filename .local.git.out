@@ -107,3 +107,6 @@
  create mode 100755 .nfs0000000002194e2c0000033a
 [master f9c1e1d] Make IRCclient
  3 files changed, 4 insertions(+), 1 deletion(-)
+[master 7dffb96] Make IRCclient
+ 3 files changed, 10 insertions(+), 1 deletion(-)
+ rewrite IRCClient (74%)
