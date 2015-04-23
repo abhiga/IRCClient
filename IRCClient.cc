@@ -181,7 +181,15 @@ int main( int   argc,
 	//croom);
 	gtk_table_attach_defaults(GTK_TABLE (table), croom, 1,2, 6, 7);
 	gtk_widget_show (croom);
+
+	user = gtk_entry_new ();
+	gtk_table_attach_defaults(GTK_TABLE (table), user, 3,4, 5, 6);
+	gtk_widget_show (user);
 	
+	pass = gtk_entry_new ();
+	gtk_table_attach_defaults(GTK_TABLE (table), pass, 3,4, 6, 7);
+	gtk_widget_show (pass);
+
 	GtkWidget *leave_room = gtk_button_new_with_label ("Leave Room");
 	gtk_table_attach_defaults(GTK_TABLE (table), leave_room, 1, 2, 5,6);
 	gtk_widget_show (leave_room);

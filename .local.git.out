@@ -114,3 +114,6 @@
  3 files changed, 12 insertions(+)
 [master 4a3dae5] Make IRCclient
  3 files changed, 4 insertions(+), 2 deletions(-)
+[master f4d0bd2] Make IRCclient
+ 4 files changed, 3 insertions(+)
+ delete mode 100755 .nfs0000000002194e2c0000033a
