@@ -179,6 +179,7 @@ int main( int   argc,
 	//g_signal_connect (croom, "activate",
 	//G_CALLBACK (entry_callback),
 	//croom);
+	gtk_table_attach_defaults(GTK_TABLE (table), croom, 1,2, 6, 7);
 	gtk_widget_show (croom);
 	
 	GtkWidget *leave_room = gtk_button_new_with_label ("Leave Room");
