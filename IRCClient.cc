@@ -186,11 +186,11 @@ int main( int   argc,
 	gtk_widget_show (leave_room);
 
 	GtkWidget *sign_up = gtk_button_new_with_label ("Sign Up");
-	gtk_table_attach_defaults(GTK_TABLE (table), sign_up, 3,4, 5,6);
+	gtk_table_attach_defaults(GTK_TABLE (table), sign_up, 4,5, 5,6);
 	gtk_widget_show (sign_up);
 
 	GtkWidget *sign_in = gtk_button_new_with_label ("Sign In");
-	gtk_table_attach_defaults(GTK_TABLE (table), sign_in, 3,4, 6,7);
+	gtk_table_attach_defaults(GTK_TABLE (table), sign_in, 4,5, 6,7);
 	gtk_widget_show (sign_in);
 
 
