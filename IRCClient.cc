@@ -171,6 +171,10 @@ int main( int   argc,
 	gtk_table_attach_defaults(GTK_TABLE (table), create_room, 0, 1, 6,7);
 	gtk_widget_show (create_room);
 
+	GtkWidget *leave_room = gtk_button_new_with_label ("Leave Room");
+	gtk_table_attach_defaults(GTK_TABLE (table), leave_room, 1, 2, 5,6);
+	gtk_widget_show (leave_room);
+
 	gtk_widget_show (table);
 	gtk_widget_show (window);
 
