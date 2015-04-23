@@ -108,6 +108,8 @@ static GtkWidget *create_text( const char * initialText )
 
 	return scrolled_window;
 }
+static void croom_clicked(GtkWidget *button, gpointer data){
+}
 
 int main( int   argc,
 		char *argv[] )
@@ -179,6 +181,7 @@ int main( int   argc,
 	//g_signal_connect (croom, "activate",
 	//G_CALLBACK (entry_callback),
 	//croom);
+	g_signal_connect(G_OBJECT(create_room), "clicked", G_CALLBACK(croom_clicked),croom);
 	gtk_table_attach_defaults(GTK_TABLE (table), croom, 1,2, 6, 7);
 	gtk_widget_show (croom);
 
