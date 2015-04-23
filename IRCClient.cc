@@ -113,7 +113,8 @@ static void croom_clicked(GtkWidget *button, gpointer data){
 	printf("%s\n", pass);
 
 }
-
+static void signup_clicked(GtkWidget *button, gpointer data){
+}
 int main( int   argc,
 		char *argv[] )
 {
@@ -202,7 +203,7 @@ int main( int   argc,
 	gtk_widget_show (leave_room);
 
 	GtkWidget *sign_up = gtk_button_new_with_label ("Sign Up");
-
+	 g_signal_connect(G_OBJECT(sign_up), "clicked", G_CALLBACK(signup_clicked),user);
 	gtk_table_attach_defaults(GTK_TABLE (table), sign_up, 4,5, 5,6);
 	gtk_widget_show (sign_up);
 
