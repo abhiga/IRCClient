@@ -136,7 +136,7 @@ int main( int   argc,
 	list_users = gtk_list_store_new (1, G_TYPE_STRING);
 	update_list_users();
 	list = create_list ("Users", list_users);
-        gtk_table_attach_defaults (GTK_TABLE (table), list, 0, 1, 0, 2);
+        gtk_table_attach_defaults (GTK_TABLE (table), list, 1,2, 0, 2);
         gtk_widget_show (list);
 
 	// Add list of rooms. Use columns 0 to 4 (exclusive) and rows 0 to 4 (exclusive)
