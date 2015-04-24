@@ -4,7 +4,7 @@
 
 GtkListStore * list_rooms;
 GtkListStore * list_users;
-char *user;
+const char *user1;
 
 void update_list_rooms() {
 	GtkTreeIter iter;
@@ -198,6 +198,7 @@ int main( int   argc,
 	gtk_widget_show (croom);
 
 	user = gtk_entry_new ();
+	user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)user));
 	gtk_table_attach_defaults(GTK_TABLE (table), user, 3,4, 5, 6);
 	gtk_widget_show (user);
 	
