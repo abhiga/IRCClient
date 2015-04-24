@@ -111,12 +111,12 @@ static GtkWidget *create_text( const char * initialText )
 }
 static void croom_clicked(GtkWidget *button, gpointer data){
 	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-	printf("%s\n", pass);
+	printf("%s-%s\n", user1, pass);
 
 }
 static void signup_clicked(GtkWidget *button, gpointer data){
 	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-	printf("%s\n", pass);
+	printf("%s-%s\n", user1, pass);
 }
 static void signin_clicked(GtkWidget *button, gpointer data){
 const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
