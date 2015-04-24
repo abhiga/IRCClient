@@ -124,6 +124,7 @@ printf("%s\n", user1);
 }
 static void user_callback(GtkWidget *button, gpointer data) {
 	user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	printf("%s\n", user1);
 }
 
 int main( int   argc,
