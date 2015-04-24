@@ -122,6 +122,9 @@ static void signin_clicked(GtkWidget *button, gpointer data){
 const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 printf("%s\n", user1);
 }
+static void user_callback(GtkWidget *button, gpointer data) {
+	user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+}
 
 int main( int   argc,
 		char *argv[] )
@@ -198,7 +201,8 @@ int main( int   argc,
 	gtk_widget_show (croom);
 
 	user = gtk_entry_new ();
-	user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)user));
+	g_signal_connect(user, "activate", G_CALLBACK(user_callback),user);
+	//user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)user));
 	gtk_table_attach_defaults(GTK_TABLE (table), user, 3,4, 5, 6);
 	gtk_widget_show (user);
 	
