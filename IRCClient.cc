@@ -117,6 +117,11 @@ static void signup_clicked(GtkWidget *button, gpointer data){
 	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s\n", pass);
 }
+static void signin_clicked(GtkWidget *button, gpointer data){
+const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+printf("%s\n", pass);
+}
+
 int main( int   argc,
 		char *argv[] )
 {
@@ -210,6 +215,7 @@ int main( int   argc,
 	gtk_widget_show (sign_up);
 
 	GtkWidget *sign_in = gtk_button_new_with_label ("Sign In");
+	g_signal_connect(G_OBJECT(sign_in), "clicked", G_CALLBACK(signin_clicked),pass);
 	gtk_table_attach_defaults(GTK_TABLE (table), sign_in, 4,5, 6,7);
 	gtk_widget_show (sign_in);
 
