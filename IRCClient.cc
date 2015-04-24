@@ -4,6 +4,7 @@
 
 GtkListStore * list_rooms;
 GtkListStore * list_users;
+char *user;
 
 void update_list_rooms() {
 	GtkTreeIter iter;
