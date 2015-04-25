@@ -224,7 +224,7 @@ static void signup_clicked(GtkWidget *button, gpointer data){
 static void signin_clicked(GtkWidget *button, gpointer data){
 const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 printf("%s\n", user1);
-command("localhost 8080 ADD-USER abhiga abhiga");
+command("localhost 2011 ADD-USER abhiga abhiga");
 }
 static void user_callback(GtkWidget *button, gpointer data) {
 	user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
