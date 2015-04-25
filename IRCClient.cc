@@ -315,7 +315,7 @@ int main( int   argc,
 	gtk_widget_show (user);
 	
 	pass = gtk_entry_new ();
-	//gtk_entry_set_visibility(GTK_ENTRY(pass), FALSE);
+	gtk_entry_set_visibility(GTK_ENTRY(pass), FALSE);
 	gtk_table_attach_defaults(GTK_TABLE (table), pass, 3,4, 6, 7);
 	gtk_widget_show (pass);
 
