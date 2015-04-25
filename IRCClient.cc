@@ -123,12 +123,20 @@ void update_list_rooms() {
 	int j = 0;
 	char* ch = strtok(res, "\n\r");
 	while(ch!=NULL) {
-		printf("%s\n", ch);
-		ch = strtok(NULL, "\n\r");
+		//printf("%s\n", ch);
+	ch = strtok(NULL, "\n\r");
+	 gchar *msg = g_strdup_printf (ch);
+	                  gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
+	                  gtk_list_store_set (GTK_LIST_STORE (list_rooms),
+	                                  &iter,
+	                                  0, msg,
+	                                  -1);
+	 g_free (msg);
+
 	}
 	//}
 	/* Add some messages to the window */
-	for (i = 0; i < 10; i++) {
+	/*for (i = 0; i < 10; i++) {
 		gchar *msg = g_strdup_printf ("Room %d", i);
 		gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
 		gtk_list_store_set (GTK_LIST_STORE (list_rooms), 
@@ -136,7 +144,7 @@ void update_list_rooms() {
 				0, msg,
 				-1);
 		g_free (msg);
-	}
+	}*/
 }
 void update_list_users() {
 	GtkTreeIter iter;
