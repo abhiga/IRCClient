@@ -112,7 +112,7 @@ GtkListStore * list_users;
 const char *user1;
 
 void update_list_rooms() {
-	//list_rooms = NULL;
+	//list_rooms = gtk_list_store_new(1,G_G_TYPE_STRING);
 	GtkTreeIter iter;
 	int i;
 	char res[MAX_RESPONSE];
@@ -260,6 +260,7 @@ static void user_callback(GtkWidget *button, gpointer data) {
 	//printf("%s\n", user1);
 }
 static void list_clicked() {
+	gtk_list_store_clear(list_rooms);
 	update_list_rooms();
 }
 
