@@ -73,7 +73,7 @@ int sendCommand(char * host, int port, char * command, char * user,
 	int sock = open_client_socket( host, port);
 
 	// Send command
-	printf("yeah\n");
+	//printf("yeah\n");
 	write(sock, command, strlen(command));
 	write(sock, " ", 1);
 	write(sock, user, strlen(user));
