@@ -14,7 +14,7 @@
 //#include "TestIRCServer.h"
 
 char * user;
-char * password;
+char * pass;
 char * host;
 char * sport;
 int port;
@@ -216,12 +216,12 @@ static void croom_clicked(GtkWidget *button, gpointer data){
 	char *res;
 	const char *rname = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s\n", rname);
-	// sendCommand("127.0.0.1",2011,"CREATE-ROOM",strdup(user),strdup(pass), "",res);
+	sendCommand("127.0.0.1",2011,"CREATE-ROOM",strdup(user),strdup(pass), "",res);
 
 }
 static void signup_clicked(GtkWidget *button, gpointer data){
 	char *res;
-	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	pass = (char*)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s-%s\n", user, pass);
 	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user),strdup(pass), "",res);
 	//printf("%s",res);
