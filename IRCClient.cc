@@ -112,6 +112,7 @@ GtkListStore * list_users;
 const char *user1;
 
 void update_list_rooms() {
+	list_rooms = NULL;
 	GtkTreeIter iter;
 	int i;
 	char res[MAX_RESPONSE];
