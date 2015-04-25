@@ -99,8 +99,11 @@ int sendCommand(char *  host, int port, char * command, char * response) {
 void command(char*inp) {
 	char* ch;
 	host = strtok(inp," ");
+	printf("%s\n",host);
 	sport = strtok(NULL, " ");
+	printf("%s\n",sport);
 	ch = strtok(NULL, " ");
+	printf("%s\n",ch);
 	sscanf(sport, "%d", &port);
 	char response[MAX_RESPONSE];
 	sendCommand(host, port, ch, response);
