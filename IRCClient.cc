@@ -331,6 +331,11 @@ int main( int   argc,
 	GtkWidget *leave_room = gtk_button_new_with_label ("Leave Room");
 	gtk_table_attach_defaults(GTK_TABLE (table), leave_room, 1, 2, 5,6);
 	gtk_widget_show (leave_room);
+	
+	GtkWidget *list_rooms = gtk_button_new_with_label ("List Rooms");
+	gtk_table_attach_defaults(GTK_TABLE (table), list_rooms, 1, 2, 2,3);
+	gtk_widget_show (list_rooms);
+
 
 	GtkWidget *sign_up = gtk_button_new_with_label ("Sign Up");
 	g_signal_connect(G_OBJECT(sign_up), "clicked", G_CALLBACK(signup_clicked),pass);
