@@ -162,3 +162,6 @@
  3 files changed, 4 insertions(+)
 [master ea030e8] Make IRCclient
  3 files changed, 3 insertions(+), 1 deletion(-)
+[master 35c1c56] Make IRCclient
+ 3 files changed, 11 insertions(+), 1 deletion(-)
+ rewrite TestIRCServer (78%)
