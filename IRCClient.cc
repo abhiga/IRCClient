@@ -19,6 +19,7 @@ char * pass;
 char * host;
 char * sport;
 int port;
+//char res[MAX_RESPONSE];
 int open_client_socket(char * host, int port) {
 	// Initialize socket address structure
 	struct  sockaddr_in socketAddress;
@@ -88,6 +89,7 @@ int sendCommand(char * host, int port, char * command, char * user,
 	while ((n=read(sock, response+len, MAX_RESPONSE - len))>0) {
 		len += n;
 	}
+	response[len-1] = '\0';
 	printf("response:%s\n", response);
 
 	close(sock);
@@ -217,7 +219,7 @@ static GtkWidget *create_text( const char * initialText )
 	return scrolled_window;
 }
 static void croom_clicked(GtkWidget *button, gpointer data){
-	char *res;
+	char res[MAX_RESPONSE];
 	const char *rname = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s\n", rname);
 	sendCommand("127.0.0.1",2011,"CREATE-ROOM",strdup(user),strdup(pass), "",res);
