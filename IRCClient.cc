@@ -116,7 +116,7 @@ void update_list_rooms() {
 	int i;
 	char *res;
 	if(user!=NULL) {
-	sendCommand("127.0.0.1", 2011,"LIST-ROOMS", user, pass, "", res);
+	sendCommand(host, port,"LIST-ROOMS", user, pass, "", res);
 	printf("%s", res);
 	}
 	/* Add some messages to the window */
@@ -222,21 +222,21 @@ static void croom_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	char *rname = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s\n", rname);
-	sendCommand("127.0.0.1",2011,"CREATE-ROOM",strdup(user),strdup(pass), rname,res);
+	sendCommand(host,port,"CREATE-ROOM",strdup(user),strdup(pass), rname,res);
 
 }
 static void signup_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	pass = (char*)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s-%s\n", user, pass);
-	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user),strdup(pass), "",res);
+	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "",res);
 	//printf("%s",res);
 }
 static void signin_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user);
-	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user),strdup(pass), "", res);;
+	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);;
 }
 static void user_callback(GtkWidget *button, gpointer data) {
 	user = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
