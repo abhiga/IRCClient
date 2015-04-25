@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 //#include "TestIRCServer.h"
+
+
 GtkListStore * list_rooms;
 GtkListStore * list_users;
 const char *user1;

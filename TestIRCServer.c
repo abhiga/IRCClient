@@ -13,6 +13,7 @@
 #include <stdlib.h>
 //#include "TestIRCServer.h"
 
+
 char * user;
 char * password;
 char * host;
@@ -104,7 +105,7 @@ printUsage()
 	printf("Usage: test-talk-server host port command\n");
 	exit(1);
 }
-void command(char*inp) {
+extern void command(char*inp) {
 	char* ch;
 	host = strtok(inp," ");
 	sport = strtok(NULL, " ");
