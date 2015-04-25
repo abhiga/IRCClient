@@ -130,13 +130,12 @@ void update_list_rooms() {
 		g_free (msg);
 	}
 }
-int j = 10;
 void update_list_users() {
 	GtkTreeIter iter;
 	int i;
 
 	/* Add some messages to the window */
-	for (i = 0; i < j; i++) {
+	for (i = 0; i < 10; i++) {
 		gchar *msg = g_strdup_printf ("User %d", i);
 		gtk_list_store_append (GTK_LIST_STORE (list_users), &iter);
 		gtk_list_store_set (GTK_LIST_STORE (list_users),
@@ -244,8 +243,7 @@ static void user_callback(GtkWidget *button, gpointer data) {
 	//printf("%s\n", user1);
 }
 static void list_clicked() {
-	update_list_users();
-	j--;
+	update_list_rooms();
 }
 
 int main( int   argc,
