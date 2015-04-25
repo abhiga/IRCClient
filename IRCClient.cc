@@ -16,9 +16,9 @@
 using namespace std;
 char * user;
 char * pass;
-char * host;
+char * host ="127.0.0.1";
 char * sport;
-int port;
+int port = 2011;
 //char res[MAX_RESPONSE];
 int open_client_socket(char * host, int port) {
 	// Initialize socket address structure
