@@ -116,7 +116,7 @@ void update_list_rooms() {
 	int i;
 	char res[MAX_RESPONSE];
 	sendCommand(host, port,"LIST-ROOMS", user, pass, "", res);
-	
+	if(res!=NULL)	
 	printf("%s", res);
 	//}
 	/* Add some messages to the window */
