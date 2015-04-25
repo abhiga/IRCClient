@@ -114,7 +114,7 @@ const char *user1;
 void update_list_rooms() {
 	GtkTreeIter iter;
 	int i;
-	char *res;
+	char res[MAX_RESPONSE];
 	if(user!=NULL) {
 	sendCommand(host, port,"LIST-ROOMS", user, pass, "", res);
 	printf("%s", res);
