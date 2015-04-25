@@ -71,6 +71,7 @@ int sendCommand(char * host, int port, char * command, char * user,
 	int sock = open_client_socket( host, port);
 
 	// Send command
+	printf("yeah\n");
 	write(sock, command, strlen(command));
 	write(sock, " ", 1);
 	write(sock, user, strlen(user));
@@ -217,8 +218,10 @@ static void croom_clicked(GtkWidget *button, gpointer data){
 
 }
 static void signup_clicked(GtkWidget *button, gpointer data){
+	char *res;
 	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s-%s\n", user1, pass);
+	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user1),strdup(pass), "",res);
 }
 static void signin_clicked(GtkWidget *button, gpointer data){
 const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
