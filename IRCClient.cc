@@ -96,6 +96,15 @@ int sendCommand(char *  host, int port, char * command, char * response) {
 
 	return 1;
 }
+void command(char*inp) {
+	char* ch;
+	host = strtok(inp," ");
+	sport = strtok(NULL, " ");
+	ch = strtok(NULL, " ");
+	sscanf(sport, "%d", &port);
+	char response[MAX_RESPONSE];
+	sendCommand(host, port, ch, response);
+}
 GtkListStore * list_rooms;
 GtkListStore * list_users;
 const char *user1;
