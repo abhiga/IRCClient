@@ -88,7 +88,6 @@ int sendCommand(char * host, int port, char * command, char * user,
 	while ((n=read(sock, response+len, MAX_RESPONSE - len))>0) {
 		len += n;
 	}
-
 	printf("response:%s\n", response);
 
 	close(sock);
@@ -225,7 +224,7 @@ static void croom_clicked(GtkWidget *button, gpointer data){
 
 }
 static void signup_clicked(GtkWidget *button, gpointer data){
-	char *res;
+	char res[MAX_RESPONSE];
 	pass = (char*)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s-%s\n", user, pass);
 	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user),strdup(pass), "",res);
