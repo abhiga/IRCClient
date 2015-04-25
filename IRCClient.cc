@@ -115,10 +115,10 @@ void update_list_rooms() {
 	GtkTreeIter iter;
 	int i;
 	char res[MAX_RESPONSE];
-	if(user!=NULL) {
 	sendCommand(host, port,"LIST-ROOMS", user, pass, "", res);
+	
 	printf("%s", res);
-	}
+	//}
 	/* Add some messages to the window */
 	for (i = 0; i < 10; i++) {
 		gchar *msg = g_strdup_printf ("Room %d", i);
