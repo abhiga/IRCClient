@@ -23,47 +23,47 @@ int port = 2011;
 int open_client_socket(char * host, int port) {
 	// Initialize socket address structure
 	struct  sockaddr_in socketAddress;
-	
+
 	// Clear sockaddr structure
 	memset((char *)&socketAddress,0,sizeof(socketAddress));
-	
+
 	// Set family to Internet 
 	socketAddress.sin_family = AF_INET;
-	
+
 	// Set port
 	socketAddress.sin_port = htons((u_short)port);
-	
+
 	// Get host table entry for this host
 	struct  hostent  *ptrh = gethostbyname(host);
 	if ( ptrh == NULL ) {
 		perror("gethostbyname");
 		exit(1);
 	}
-	
+
 	// Copy the host ip address to socket address structure
 	memcpy(&socketAddress.sin_addr, ptrh->h_addr, ptrh->h_length);
-	
+
 	// Get TCP transport protocol entry
 	struct  protoent *ptrp = getprotobyname("tcp");
 	if ( ptrp == NULL ) {
 		perror("getprotobyname");
 		exit(1);
 	}
-	
+
 	// Create a tcp socket
 	int sock = socket(PF_INET, SOCK_STREAM, ptrp->p_proto);
 	if (sock < 0) {
 		perror("socket");
 		exit(1);
 	}
-	
+
 	// Connect the socket to the specified server
 	if (connect(sock, (struct sockaddr *)&socketAddress,
-		    sizeof(socketAddress)) < 0) {
+				sizeof(socketAddress)) < 0) {
 		perror("connect");
 		exit(1);
 	}
-	
+
 	return sock;
 }
 
@@ -95,18 +95,18 @@ int sendCommand(char * host, int port, char * command, char * user,
 	close(sock);
 }
 /*void command(char*inp) {
-	char* ch;
-	printf("agaurav\n");
-	host = strtok(inp,"|");
-	printf("%s\n",host);
-	sport = strtok(NULL, " ");
-	printf("%s\n",sport);
-	ch = strtok(NULL, " ");
-	printf("%s\n",ch);
-	sscanf(sport, "%d", &port);
-	char response[MAX_RESPONSE];
-	sendCommand(host, port, ch, response);
-}*/
+  char* ch;
+  printf("agaurav\n");
+  host = strtok(inp,"|");
+  printf("%s\n",host);
+  sport = strtok(NULL, " ");
+  printf("%s\n",sport);
+  ch = strtok(NULL, " ");
+  printf("%s\n",ch);
+  sscanf(sport, "%d", &port);
+  char response[MAX_RESPONSE];
+  sendCommand(host, port, ch, response);
+  }*/
 GtkListStore * list_rooms;
 GtkListStore * list_users;
 const char *user1;
@@ -117,37 +117,35 @@ void update_list_rooms() {
 	int i;
 	char res[MAX_RESPONSE];
 	if(user!=NULL) {
-	sendCommand(host, port,"LIST-ROOMS", user, pass, "", res);	
-	//if(res!=NULL)
-	//printf("%s", res);
+		sendCommand(host, port,"LIST-ROOMS", user, pass, "", res);	
+		//if(res!=NULL)
+		//printf("%s", res);
 	}
-	int j = 0;
+	//int j = 0;
 	char* ch = strtok(res, "\n\r");
 	while(ch!=NULL) {
 		//printf("%s\n", ch);
-	ch = strtok(NULL, "\n\r");
-	if (ch == "")
-		break;
-	 gchar *msg = g_strdup_printf (ch);
-	                  gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
-	                  gtk_list_store_set (GTK_LIST_STORE (list_rooms),
-	                                  &iter,
-	                                  0, msg,
-	                                  -1);
-	 g_free (msg);
-
-	}
-	//}
-	/* Add some messages to the window */
-	/*for (i = 0; i < 10; i++) {
-		gchar *msg = g_strdup_printf ("Room %d", i);
+		ch = strtok(NULL, "\n\r");
+		gchar *msg = g_strdup_printf (ch);
 		gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
-		gtk_list_store_set (GTK_LIST_STORE (list_rooms), 
+		gtk_list_store_set (GTK_LIST_STORE (list_rooms),
 				&iter,
 				0, msg,
 				-1);
 		g_free (msg);
-	}*/
+
+	}
+	//}
+/* Add some messages to the window */
+/*for (i = 0; i < 10; i++) {
+  gchar *msg = g_strdup_printf ("Room %d", i);
+  gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
+  gtk_list_store_set (GTK_LIST_STORE (list_rooms), 
+  &iter,
+  0, msg,
+  -1);
+  g_free (msg);
+  }*/
 }
 void update_list_users() {
 	GtkTreeIter iter;
@@ -295,8 +293,8 @@ int main( int   argc,
 	list_users = gtk_list_store_new (1, G_TYPE_STRING);
 	update_list_users();
 	list = create_list ("Users", list_users);
-        gtk_table_attach_defaults (GTK_TABLE (table), list, 0,1, 0, 2);
-        gtk_widget_show (list);
+	gtk_table_attach_defaults (GTK_TABLE (table), list, 0,1, 0, 2);
+	gtk_widget_show (list);
 
 	// Add list of rooms. Use columns 0 to 4 (exclusive) and rows 0 to 4 (exclusive)
 	list_rooms = gtk_list_store_new (1, G_TYPE_STRING);
@@ -304,13 +302,13 @@ int main( int   argc,
 	list = create_list ("Rooms", list_rooms);
 	gtk_table_attach_defaults (GTK_TABLE (table), list, 1,2, 0, 2);
 	gtk_widget_show (list);
-	
+
 	label = gtk_label_new("Username");
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,5,6);
 	gtk_widget_show(label);
 	label = gtk_label_new("Password");
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,6,7);
-         gtk_widget_show(label);
+	gtk_widget_show(label);
 	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
 	messages = create_text ("Server Message List");
 	gtk_table_attach_defaults (GTK_TABLE (table), messages, 2, 5, 0, 5);
@@ -329,7 +327,7 @@ int main( int   argc,
 	GtkWidget *create_room = gtk_button_new_with_label ("Create Room");
 	gtk_table_attach_defaults(GTK_TABLE (table), create_room, 0, 1, 6,7);
 	gtk_widget_show (create_room);
-	
+
 	croom = gtk_entry_new ();
 	//gtk_entry_set_max_length (GTK_ENTRY (croom), 50);
 	//g_signal_connect (croom, "activate",
@@ -344,7 +342,7 @@ int main( int   argc,
 	//user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)user));
 	gtk_table_attach_defaults(GTK_TABLE (table), user1, 3,4, 5, 6);
 	gtk_widget_show (user1);
-	
+
 	pass = gtk_entry_new ();
 	gtk_entry_set_visibility(GTK_ENTRY(pass), FALSE);
 	gtk_table_attach_defaults(GTK_TABLE (table), pass, 3,4, 6, 7);
@@ -353,7 +351,7 @@ int main( int   argc,
 	GtkWidget *leave_room = gtk_button_new_with_label ("Leave Room");
 	gtk_table_attach_defaults(GTK_TABLE (table), leave_room, 1, 2, 5,6);
 	gtk_widget_show (leave_room);
-	
+
 	GtkWidget *list_rooms = gtk_button_new_with_label ("List Rooms");
 	g_signal_connect(G_OBJECT(list_rooms), "clicked", G_CALLBACK(list_clicked),NULL);
 	gtk_table_attach_defaults(GTK_TABLE (table), list_rooms, 1, 2, 2,3);
