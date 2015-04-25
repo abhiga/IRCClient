@@ -66,21 +66,19 @@ int open_client_socket(char * host, int port) {
 }
 
 #define MAX_RESPONSE (10 * 1024)
-int sendCommand(char *  host, int port, char * command, char * response) {
-	
+int sendCommand(char * host, int port, char * command, char * user,
+		char * password, char * args, char * response) {
 	int sock = open_client_socket( host, port);
-
-	if (sock<0) {
-		return 0;
-	}
 
 	// Send command
 	write(sock, command, strlen(command));
+	write(sock, " ", 1);
+	write(sock, user, strlen(user));
+	write(sock, " ", 1);
+	write(sock, password, strlen(password));
+	write(sock, " ", 1);
+	write(sock, args, strlen(args));
 	write(sock, "\r\n",2);
-
-	//Print copy to stdout
-	write(1, command, strlen(command));
-	write(1, "\r\n",2);
 
 	// Keep reading until connection is closed or MAX_REPONSE
 	int n = 0;
@@ -88,15 +86,12 @@ int sendCommand(char *  host, int port, char * command, char * response) {
 	while ((n=read(sock, response+len, MAX_RESPONSE - len))>0) {
 		len += n;
 	}
-	response[len]=0;
 
-	printf("response:\n%s\n", response);
+	//printf("response:%s\n", response);
 
 	close(sock);
-
-	return 1;
 }
-void command(char*inp) {
+/*void command(char*inp) {
 	char* ch;
 	printf("agaurav\n");
 	host = strtok(inp,"|");
@@ -108,7 +103,7 @@ void command(char*inp) {
 	sscanf(sport, "%d", &port);
 	char response[MAX_RESPONSE];
 	sendCommand(host, port, ch, response);
-}
+}*/
 GtkListStore * list_rooms;
 GtkListStore * list_users;
 const char *user1;
@@ -228,7 +223,7 @@ static void signup_clicked(GtkWidget *button, gpointer data){
 static void signin_clicked(GtkWidget *button, gpointer data){
 const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 printf("%s\n", user1);
-command("127.0.0.1|2011|ADD-USER|abhiga|abhiga");
+//command("127.0.0.1|2011|ADD-USER|abhiga|abhiga");
 }
 static void user_callback(GtkWidget *button, gpointer data) {
 	user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
