@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 //#include "TestIRCServer.h"
-
+using namespace std;
 char * user;
 char * pass;
 char * host;
