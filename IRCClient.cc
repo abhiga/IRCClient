@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <gtk/gtk.h>
+#include <thread>
 //#include "TestIRCServer.h"
 using namespace std;
 char * user;
@@ -276,6 +277,8 @@ int main( int   argc,
 	// Add list of rooms. Use columns 0 to 4 (exclusive) and rows 0 to 4 (exclusive)
 	list_rooms = gtk_list_store_new (1, G_TYPE_STRING);
 	update_list_rooms();
+	thread t1;
+	t1.join();
 	list = create_list ("Rooms", list_rooms);
 	gtk_table_attach_defaults (GTK_TABLE (table), list, 0, 1, 0, 2);
 	gtk_widget_show (list);
