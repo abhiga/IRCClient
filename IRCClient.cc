@@ -98,7 +98,7 @@ int sendCommand(char *  host, int port, char * command, char * response) {
 }
 void command(char*inp) {
 	char* ch;
-	printf("abhiga\n");
+	printf("agaurav\n");
 	host = strtok(inp," ");
 	printf("%s\n",host);
 	sport = strtok(NULL, " ");
