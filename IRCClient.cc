@@ -228,14 +228,15 @@ static void croom_clicked(GtkWidget *button, gpointer data){
 static void signup_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	pass = (char*)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-	printf("%s-%s\n", user, pass);
+	//printf("%s-%s\n", user, pass);
 	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user),strdup(pass), "",res);
 	//printf("%s",res);
 }
 static void signin_clicked(GtkWidget *button, gpointer data){
-const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-printf("%s\n", user);
-//command("127.0.0.1|2011|ADD-USER|abhiga|abhiga");
+	char res[MAX_RESPONSE];
+	pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	//printf("%s\n", user);
+	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user),strdup(pass), "", res);;
 }
 static void user_callback(GtkWidget *button, gpointer data) {
 	user = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
