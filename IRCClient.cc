@@ -220,9 +220,9 @@ static GtkWidget *create_text( const char * initialText )
 }
 static void croom_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
-	const char *rname = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	char *rname = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s\n", rname);
-	sendCommand("127.0.0.1",2011,"CREATE-ROOM",strdup(user),strdup(pass), "",res);
+	sendCommand("127.0.0.1",2011,"CREATE-ROOM",strdup(user),strdup(pass), rname,res);
 
 }
 static void signup_clicked(GtkWidget *button, gpointer data){
