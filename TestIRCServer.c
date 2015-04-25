@@ -104,7 +104,15 @@ printUsage()
 	printf("Usage: test-talk-server host port command\n");
 	exit(1);
 }
-
+void command(char*inp) {
+	char* ch;
+	host = strtok(inp," ");
+	sport = strtok(NULL, " ");
+	ch = strtok(NULL, " ");
+	sscanf(sport, "%d", &port);
+	char response[MAX_RESPONSE];
+	sendCommand(host, port, ch, response);
+}
 int
 main(int argc, char **argv) {
 
