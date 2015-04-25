@@ -242,6 +242,8 @@ static void user_callback(GtkWidget *button, gpointer data) {
 	user = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user1);
 }
+static void list_clicked() {
+}
 
 int main( int   argc,
 		char *argv[] )
@@ -333,6 +335,7 @@ int main( int   argc,
 	gtk_widget_show (leave_room);
 	
 	GtkWidget *list_rooms = gtk_button_new_with_label ("List Rooms");
+	g_signal_connect(G_OBJECT(list_rooms), "clicked", G_CALLBACK(list_clicked),NULL);
 	gtk_table_attach_defaults(GTK_TABLE (table), list_rooms, 1, 2, 2,3);
 	gtk_widget_show (list_rooms);
 
