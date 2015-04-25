@@ -222,6 +222,7 @@ static void signup_clicked(GtkWidget *button, gpointer data){
 	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	printf("%s-%s\n", user1, pass);
 	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user1),strdup(pass), "",res);
+	printf("%s",res);
 }
 static void signin_clicked(GtkWidget *button, gpointer data){
 const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
