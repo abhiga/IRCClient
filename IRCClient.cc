@@ -213,24 +213,26 @@ static GtkWidget *create_text( const char * initialText )
 	return scrolled_window;
 }
 static void croom_clicked(GtkWidget *button, gpointer data){
-	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-	printf("%s\n", pass);
+	char *res;
+	const char *rname = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	printf("%s\n", rname);
+	// sendCommand("127.0.0.1",2011,"CREATE-ROOM",strdup(user),strdup(pass), "",res);
 
 }
 static void signup_clicked(GtkWidget *button, gpointer data){
 	char *res;
 	const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-	printf("%s-%s\n", user1, pass);
-	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user1),strdup(pass), "",res);
-	printf("%s",res);
+	printf("%s-%s\n", user, pass);
+	sendCommand("127.0.0.1",2011,"ADD-USER",strdup(user),strdup(pass), "",res);
+	//printf("%s",res);
 }
 static void signin_clicked(GtkWidget *button, gpointer data){
 const char *pass = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-printf("%s\n", user1);
+printf("%s\n", user);
 //command("127.0.0.1|2011|ADD-USER|abhiga|abhiga");
 }
 static void user_callback(GtkWidget *button, gpointer data) {
-	user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	user = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user1);
 }
 
@@ -243,7 +245,7 @@ int main( int   argc,
 	GtkWidget *myMessage;
 	GtkWidget *label;
 	GtkWidget *croom;
-	GtkWidget *user;
+	GtkWidget *user1;
 	GtkWidget *pass;
 	gtk_init (&argc, &argv);
 	//label = gtk_label_new("Username");
@@ -308,11 +310,11 @@ int main( int   argc,
 	gtk_table_attach_defaults(GTK_TABLE (table), croom, 1,2, 6, 7);
 	gtk_widget_show (croom);
 
-	user = gtk_entry_new ();
-	g_signal_connect(user, "activate", G_CALLBACK(user_callback),user);
+	user1 = gtk_entry_new ();
+	g_signal_connect(user1, "activate", G_CALLBACK(user_callback),user1);
 	//user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)user));
-	gtk_table_attach_defaults(GTK_TABLE (table), user, 3,4, 5, 6);
-	gtk_widget_show (user);
+	gtk_table_attach_defaults(GTK_TABLE (table), user1, 3,4, 5, 6);
+	gtk_widget_show (user1);
 	
 	pass = gtk_entry_new ();
 	gtk_entry_set_visibility(GTK_ENTRY(pass), FALSE);
