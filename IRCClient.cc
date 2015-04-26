@@ -34,9 +34,10 @@ GtkTreeIter iter;
 
     gtk_tree_model_get(model, &iter, 0, &value,  -1);
     //gtk_label_set_text(GTK_LABEL(label), value);
+    printf("%s\n", value);
     g_free(value);
   }
-  printf("%s\n", value);
+  //printf("%s\n", value);
 }
 int open_client_socket(char * host, int port) {
 	// Initialize socket address structure
