@@ -21,6 +21,7 @@ char * pass;
 char * host ="127.0.0.1";
 char * sport;
 int port = 2011;
+char *room;
 //char res[MAX_RESPONSE];
 
 static void sel_callback(GtkWidget *widget) {
@@ -34,6 +35,7 @@ GtkTreeIter iter;
 
     gtk_tree_model_get(model, &iter, 0, &value,  -1);
     //gtk_label_set_text(GTK_LABEL(label), value);
+    room = strdup(value);
     printf("%s\n", value);
     g_free(value);
   }
