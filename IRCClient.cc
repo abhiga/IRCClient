@@ -294,11 +294,11 @@ static void leave_clicked(){
          //printf("%s\n", user);
          sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
  }
-static void send_clicked(){
-          char res[MAX_RESPONSE];
-          //pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-	//printf("%s\n", user);
-          sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
+static void send_clicked(GtkWidget *button, gpointer data){
+	char res[MAX_RESPONSE];
+        pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	printf("%s\n", pass);
+          //sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
 }
 static void enter_clicked(){//GtkWidget *button, gpointer data){
          char res[MAX_RESPONSE];
@@ -375,7 +375,7 @@ int main( int   argc,
 
 	// Add send button. Use columns 0 to 1 (exclusive) and rows 4 to 7 (exclusive)
 	GtkWidget *send_button = gtk_button_new_with_label ("Send Message");
-	g_signal_connect(G_OBJECT(send_button), "clicked", G_CALLBACK(send_clicked),NULL);
+	g_signal_connect(G_OBJECT(send_button), "clicked", G_CALLBACK(send_clicked),myMessage);
 	gtk_table_attach_defaults(GTK_TABLE (table), send_button, 0, 1, 5, 6); 
 	gtk_widget_show (send_button);
 
