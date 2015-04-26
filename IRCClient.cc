@@ -297,6 +297,7 @@ static void leave_clicked(){
 static void send_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
         pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	if(pass!=NULL)
 	printf("%s\n", pass);
           //sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
 }
