@@ -22,7 +22,6 @@ char * host ="127.0.0.1";
 char * sport;
 int port = 2012;
 char *room;
-//char res[MAX_RESPONSE];
 
 static void sel_callback(GtkWidget *widget) {
 GtkTreeIter iter;
