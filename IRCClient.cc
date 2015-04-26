@@ -289,7 +289,7 @@ static void enter_clicked(GtkWidget *button, gpointer data){
          char res[MAX_RESPONSE];
          pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
          //printf("%s\n", user);
-         sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
+         sendCommand(host,port,"ENTE-ROOM",strdup(user),strdup(pass), room, res);
 }
 
 static void user_callback(GtkWidget *button, gpointer data) {
