@@ -13,13 +13,30 @@
 #include <gtk/gtk.h>
 #include <thread>
 //#include "TestIRCServer.h"
+
 using namespace std;
+GtkTreeSelection *sel;
 char * user;
 char * pass;
 char * host ="127.0.0.1";
 char * sport;
 int port = 2011;
 //char res[MAX_RESPONSE];
+
+static void sel_callback(GtkWidget *widget) {
+GtkTreeIter iter;
+  GtkTreeModel *model;
+  char *value;
+
+
+  if (gtk_tree_selection_get_selected(
+      GTK_TREE_SELECTION(widget), &model, &iter)) {
+
+    gtk_tree_model_get(model, &iter, 0, &value,  -1);
+    //gtk_label_set_text(GTK_LABEL(label), value);
+    g_free(value);
+  }
+}
 int open_client_socket(char * host, int port) {
 	// Initialize socket address structure
 	struct  sockaddr_in socketAddress;
@@ -375,8 +392,9 @@ int main( int   argc,
 	g_signal_connect(G_OBJECT(sign_in), "clicked", G_CALLBACK(signin_clicked),pass);
 	gtk_table_attach_defaults(GTK_TABLE (table), sign_in, 4,5, 6,7);
 	gtk_widget_show (sign_in);
-
-	g_signal_connect(tree_view, "row-activated", G_CALLBACK(update_list_users), NULL);
+	
+	sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
+	g_signal_connect(tree_view, "row-activated", G_CALLBACK(sel_callback), sel);
 
 
 
