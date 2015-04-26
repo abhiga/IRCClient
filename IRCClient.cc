@@ -147,7 +147,7 @@ void update_list_rooms() {
 	char* ch = strtok(res, "\r\n");
 	while(ch!=NULL) {
 		//printf("%s\n", ch);
-		ch = strtok(NULL, "\r\n");
+		//ch = strtok(NULL, "\r\n");
 		gchar *msg = g_strdup_printf (ch);
 		gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
 		gtk_list_store_set (GTK_LIST_STORE (list_rooms),
@@ -155,6 +155,7 @@ void update_list_rooms() {
 				0, msg,
 				-1);
 		g_free (msg);
+		ch = strtok(NULL,"\r\n");
 
 	}
 	//}
