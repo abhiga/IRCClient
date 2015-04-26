@@ -302,7 +302,7 @@ static void send_clicked(GtkWidget *button, gpointer data){
 	strcpy(ar,room);
 	strcat(ar, " ");
 	strcat(ar, mess);
-	sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), ar, res);
+	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), ar, res);
 }
 static void enter_clicked(){//GtkWidget *button, gpointer data){
          char res[MAX_RESPONSE];
