@@ -131,7 +131,8 @@ int sendCommand(char * host, int port, char * command, char * user,
   }*/
 char messlist[1000];
 static void getMessages() {
-	char res[100];
+	//char res[100];
+	printf("Yeah\n");
 	//char *comm = (char*)malloc(100*sizeof(char));
 	//sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
 	
