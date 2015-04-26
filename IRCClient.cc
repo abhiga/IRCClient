@@ -394,7 +394,7 @@ int main( int   argc,
 	gtk_widget_show (sign_in);
 	
 	sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
-	g_signal_connect(tree_view, "row-activated", G_CALLBACK(sel_callback), sel);
+	g_signal_connect_swapped(tree_view, "row-activated", G_CALLBACK(sel_callback), sel);
 
 
 
