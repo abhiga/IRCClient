@@ -175,6 +175,7 @@ void update_list_users(){//GtkWidget * button, gpointer data) {
 	GtkTreeIter iter;
 	int i;
 	char res[MAX_RESPONSE];
+	if(user!=NULL)
 	sendCommand(host, port,"LIST-USERS-IN-ROOM", user, pass, room, res);
 	/* Add some messages to the window */
 	char* ch = strtok(res, "\r\n");
