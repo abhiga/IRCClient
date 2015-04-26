@@ -13,7 +13,7 @@
 #include <gtk/gtk.h>
 #include <thread>
 //#include "TestIRCServer.h"
-
+void update_list_users();
 using namespace std;
 GtkTreeSelection *sel;
 char * user;
@@ -37,6 +37,7 @@ GtkTreeIter iter;
     printf("%s\n", value);
     g_free(value);
   }
+  update_list_users();
   //printf("%s\n", value);
 }
 int open_client_socket(char * host, int port) {
