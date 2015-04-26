@@ -354,8 +354,8 @@ int main( int   argc,
 	gtk_widget_show (leave_room);
 
 	GtkWidget *enter_room = gtk_button_new_with_label ("Enter Room");
-	//gtk_table_attach_defaults(GTK_TABLE (table), enter_room, 0,1,2,3);
-	gtk_widget_show (leave_room);
+	gtk_table_attach_defaults(GTK_TABLE (table), enter_room, 0,1,2,3);
+	gtk_widget_show (enter_room);
 
 	GtkWidget *list_rooms = gtk_button_new_with_label ("List Rooms");
 	g_signal_connect(G_OBJECT(list_rooms), "clicked", G_CALLBACK(list_clicked),NULL);
