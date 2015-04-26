@@ -373,7 +373,7 @@ int main( int   argc,
 	gtk_table_attach_defaults(GTK_TABLE (table), sign_in, 4,5, 6,7);
 	gtk_widget_show (sign_in);
 
-
+	g_signal_connect(tree_view, "row-activated", G_CALLBACK(update_list_users), NULL);
 
 
 
