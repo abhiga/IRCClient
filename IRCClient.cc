@@ -147,7 +147,9 @@ void update_list_rooms() {
   g_free (msg);
   }*/
 }
-void update_list_users() {
+void update_list_users(){//GtkWidget * button, gpointer data) {
+	//char *p = (char *)gtk_entry_get_text(GTK_ENTRY(GtkWidget *)data);
+	//printf("%s",p);
 	GtkTreeIter iter;
 	int i;
 
@@ -275,6 +277,7 @@ int main( int   argc,
 	GtkWidget *croom;
 	GtkWidget *user1;
 	GtkWidget *pass;
+	//GtkWidget *entry;
 	gtk_init (&argc, &argv);
 	//label = gtk_label_new("Username");
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);

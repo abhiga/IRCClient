@@ -316,3 +316,6 @@
  3 files changed, 3 insertions(+), 1 deletion(-)
 [master 93dabb9] Make IRCclient
  1 file changed, 2 insertions(+)
+[master 6cbcafa] Make IRCclient
+ 2 files changed, 2 insertions(+)
+ create mode 100644 .IRCClient.cc.swp
