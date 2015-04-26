@@ -275,8 +275,21 @@ static void signin_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user);
-	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);;
+	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);
 }
+static void leave_clicked(GtkWidget *button, gpointer data){
+         char res[MAX_RESPONSE];
+         pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+         //printf("%s\n", user);
+         sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);
+ }
+static void enter_clicked(GtkWidget *button, gpointer data){
+         char res[MAX_RESPONSE];
+         pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+         //printf("%s\n", user);
+         sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);
+}
+
 static void user_callback(GtkWidget *button, gpointer data) {
 	user = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user1);
@@ -373,11 +386,14 @@ int main( int   argc,
 	gtk_widget_show (pass);
 
 	GtkWidget *leave_room = gtk_button_new_with_label ("Leave Room");
+	g_signal_connect(G_OBJECT(leave_room), "clicked", G_CALLBACK(leave_clicked),NULL);
 	gtk_table_attach_defaults(GTK_TABLE (table), leave_room, 1, 2, 2, 3);
 	gtk_widget_show (leave_room);
 
 	GtkWidget *enter_room = gtk_button_new_with_label ("Enter Room");
-	gtk_table_attach_defaults(GTK_TABLE (table), enter_room, 0,1,2,3);
+	g_signal_connect(G_OBJECT(enter_room), "clicked", G_CALLBACK(enter_clicked),NULL);
+	gtk_table_attach_defaults(GTK_TABLE (table), enter_room,0, 1, 2, 3);
+	//gtk_table_attach_defaults(GTK_TABLE (table),"clicked", G_CALLBACK(enter_clicked), 0,1,2,3);
 	gtk_widget_show (enter_room);
 
 	GtkWidget *list_rooms = gtk_button_new_with_label ("List Rooms");
