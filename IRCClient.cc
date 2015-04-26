@@ -22,24 +22,25 @@ char * host ="127.0.0.1";
 char * sport;
 int port = 2012;
 char *room;
+char buffer[256];
 
 static void sel_callback(GtkWidget *widget) {
-GtkTreeIter iter;
-  GtkTreeModel *model;
-  char *value;
+	GtkTreeIter iter;
+	GtkTreeModel *model;
+	char *value;
 
 
-  if (gtk_tree_selection_get_selected(
-      GTK_TREE_SELECTION(widget), &model, &iter)) {
+	if (gtk_tree_selection_get_selected(
+				GTK_TREE_SELECTION(widget), &model, &iter)) {
 
-    gtk_tree_model_get(model, &iter, 0, &value,  -1);
-    //gtk_label_set_text(GTK_LABEL(label), value);
-    room = strdup(value);
-    printf("%s\n", value);
-    g_free(value);
-  }
-  update_list_users();
-  //printf("%s\n", value);
+		gtk_tree_model_get(model, &iter, 0, &value,  -1);
+		//gtk_label_set_text(GTK_LABEL(label), value);
+		room = strdup(value);
+		printf("%s\n", value);
+		g_free(value);
+	}
+	update_list_users();
+	//printf("%s\n", value);
 }
 int open_client_socket(char * host, int port) {
 	// Initialize socket address structure
@@ -128,6 +129,23 @@ int sendCommand(char * host, int port, char * command, char * user,
   char response[MAX_RESPONSE];
   sendCommand(host, port, ch, response);
   }*/
+
+	static gboolean
+time_handler(GtkWidget *widget)
+{
+	if (widget->window == NULL) return FALSE;
+
+	time_t curtime;
+	struct tm *loctime;
+
+	curtime = time(NULL);
+	loctime = localtime(&curtime);
+	strftime(buffer, 256, "%T", loctime);
+
+	gtk_widget_queue_draw(widget);
+	return TRUE;
+}
+
 GtkListStore * list_rooms;
 GtkListStore * list_users;
 const char *user1;
@@ -177,13 +195,13 @@ void update_list_users(){//GtkWidget * button, gpointer data) {
 	int i;
 	char res[MAX_RESPONSE];
 	if(user!=NULL)
-	sendCommand(host, port,"GET-USERS-IN-ROOM", user, pass, room, res);
+		sendCommand(host, port,"GET-USERS-IN-ROOM", user, pass, room, res);
 	/* Add some messages to the window */
 	char* ch = strtok(res, "\r\n");
-        while(ch!=NULL) {
-	printf("%s\n", ch);
-	//ch = strtok(NULL, "\r\n");
-	gchar *msg = g_strdup_printf (ch);
+	while(ch!=NULL) {
+		printf("%s\n", ch);
+		//ch = strtok(NULL, "\r\n");
+		gchar *msg = g_strdup_printf (ch);
 
 		gtk_list_store_append (GTK_LIST_STORE (list_users), &iter);
 		gtk_list_store_set (GTK_LIST_STORE (list_users),
@@ -191,7 +209,7 @@ void update_list_users(){//GtkWidget * button, gpointer data) {
 				0, msg,
 				-1);
 		g_free (msg);
-	ch = strtok (NULL,"\r\n");
+		ch = strtok (NULL,"\r\n");
 	}
 }
 
@@ -288,16 +306,16 @@ static void signin_clicked(GtkWidget *button, gpointer data){
 	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);
 }
 static void leave_clicked(){
-         char res[MAX_RESPONSE];
-         //pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-         //printf("%s\n", user);
-         sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
- }
+	char res[MAX_RESPONSE];
+	//pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	//printf("%s\n", user);
+	sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
+}
 static void send_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
-        char *mess = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	char *mess = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	if(pass!=NULL)
-	printf("%s\n", pass);
+		printf("%s\n", pass);
 	char *ar = (char*) malloc(200*sizeof(char));
 	strcpy(ar,room);
 	strcat(ar, " ");
@@ -305,10 +323,10 @@ static void send_clicked(GtkWidget *button, gpointer data){
 	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), ar, res);
 }
 static void enter_clicked(){//GtkWidget *button, gpointer data){
-         char res[MAX_RESPONSE];
-         //pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-         //printf("%s\n", user);
-         sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
+	char res[MAX_RESPONSE];
+	//pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+	//printf("%s\n", user);
+	sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
 }
 
 static void user_callback(GtkWidget *button, gpointer data) {
@@ -434,9 +452,13 @@ int main( int   argc,
 	g_signal_connect(G_OBJECT(sign_in), "clicked", G_CALLBACK(signin_clicked),pass);
 	gtk_table_attach_defaults(GTK_TABLE (table), sign_in, 4,5, 6,7);
 	gtk_widget_show (sign_in);
-	
+
 	sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
 	g_signal_connect_swapped(tree_view, "row-activated", G_CALLBACK(sel_callback), sel);
+
+	g_timeout_add(500, (GSourceFunc) time_handler, (gpointer) window);
+	gtk_widget_show_all(window);
+	time_handler(window);
 
 
 
