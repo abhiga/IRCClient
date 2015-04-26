@@ -133,7 +133,7 @@ char messlist[1000];
 static void getMessages() {
 	char res[100];
 	//char *comm = (char*)malloc(100*sizeof(char));
-	sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
+	//sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
 	
 }	
 	static gboolean
