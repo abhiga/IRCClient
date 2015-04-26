@@ -279,15 +279,15 @@ static void signin_clicked(GtkWidget *button, gpointer data){
 	//printf("%s\n", user);
 	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);
 }
-static void leave_clicked(GtkWidget *button, gpointer data){
+static void leave_clicked(){
          char res[MAX_RESPONSE];
-         pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+         //pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
          //printf("%s\n", user);
          sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
  }
-static void enter_clicked(GtkWidget *button, gpointer data){
+static void enter_clicked(){//GtkWidget *button, gpointer data){
          char res[MAX_RESPONSE];
-         pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
+         //pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
          //printf("%s\n", user);
          sendCommand(host,port,"ENTE-ROOM",strdup(user),strdup(pass), room, res);
 }
