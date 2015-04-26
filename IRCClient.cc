@@ -371,7 +371,7 @@ int main( int   argc,
 	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
 
 	myMessage = create_text ("Type your message here.");
-	myMessage = gtk_entry_new();
+	//myMessage = gtk_entry_new();
 	gtk_table_attach_defaults (GTK_TABLE (table), myMessage, 0, 2, 3, 5);
 	gtk_widget_show (myMessage);
 
