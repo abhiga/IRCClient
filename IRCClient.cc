@@ -163,12 +163,12 @@ void update_list_users() {
 	}
 }
 
-
+GtkWidget *tree_view;
 /* Create the list of "messages" */
 static GtkWidget *create_list( const char * titleColumn, GtkListStore *model )
 {
 	GtkWidget *scrolled_window;
-	GtkWidget *tree_view;
+	//GtkWidget *tree_view;
 	//GtkListStore *model;
 	GtkCellRenderer *cell;
 	GtkTreeViewColumn *column;
@@ -372,6 +372,7 @@ int main( int   argc,
 	g_signal_connect(G_OBJECT(sign_in), "clicked", G_CALLBACK(signin_clicked),pass);
 	gtk_table_attach_defaults(GTK_TABLE (table), sign_in, 4,5, 6,7);
 	gtk_widget_show (sign_in);
+
 
 
 
