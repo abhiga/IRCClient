@@ -20,7 +20,7 @@ char * user;
 char * pass;
 char * host ="127.0.0.1";
 char * sport;
-int port = 2011;
+int port = 2012;
 char *room;
 //char res[MAX_RESPONSE];
 
