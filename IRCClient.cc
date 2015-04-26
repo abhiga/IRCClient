@@ -129,7 +129,13 @@ int sendCommand(char * host, int port, char * command, char * user,
   char response[MAX_RESPONSE];
   sendCommand(host, port, ch, response);
   }*/
-
+char messlist[1000];
+static void getMessages() {
+	char res[100];
+	char *comm = (char*)malloc(100*sizeof(char));
+	sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
+	
+}	
 	static gboolean
 time_handler(GtkWidget *widget)
 {
@@ -143,6 +149,7 @@ time_handler(GtkWidget *widget)
 	strftime(buffer, 256, "%T", loctime);
 
 	gtk_widget_queue_draw(widget);
+	getMessages();
 	return TRUE;
 }
 
