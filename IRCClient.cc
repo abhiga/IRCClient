@@ -172,11 +172,12 @@ void update_list_rooms() {
 void update_list_users(){//GtkWidget * button, gpointer data) {
 	//char *p = (char *)gtk_entry_get_text(GTK_ENTRY(GtkWidget *)data);
 	//printf("%s",p);
+	gtk_list_store_clear(list_users);
 	GtkTreeIter iter;
 	int i;
 	char res[MAX_RESPONSE];
 	if(user!=NULL)
-	sendCommand(host, port,"LIST-USERS-IN-ROOM", user, pass, room, res);
+	sendCommand(host, port,"GET-USERS-IN-ROOM", user, pass, room, res);
 	/* Add some messages to the window */
 	char* ch = strtok(res, "\r\n");
         while(ch!=NULL) {
