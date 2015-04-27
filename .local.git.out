@@ -449,3 +449,12 @@
  rewrite IRCClient (75%)
 [master bc86bd1] Make IRCclient
  1 file changed, 3 insertions(+)
+[master c91e1d5] Make IRCclient
+ 8 files changed, 2 insertions(+)
+ mode change 100755 => 100644 IRCClient
+ mode change 100755 => 100644 TestIRCServer
+ mode change 100755 => 100644 entry
+ mode change 100755 => 100644 hello
+ mode change 100755 => 100644 panned
+ mode change 100755 => 100644 radio
+ mode change 100755 => 100644 timer
