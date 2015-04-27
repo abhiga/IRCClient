@@ -183,7 +183,7 @@ time_handler(GtkWidget *widget)
 	strftime(buffer, 256, "%T", loctime);
 
 	gtk_widget_queue_draw(widget);
-	//update_list_rooms();
+	update_list_rooms();
 	getMessages();
 	return TRUE;
 }
@@ -396,7 +396,7 @@ static void user_callback(GtkWidget *button, gpointer data) {
 	//printf("%s\n", user1);
 }
 static void list_clicked() {
-	gtk_list_store_clear(list_rooms);
+	//gtk_list_store_clear(list_rooms);
 	update_list_rooms();
 }
 
