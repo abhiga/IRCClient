@@ -131,6 +131,7 @@ int sendCommand(char * host, int port, char * command, char * user,
   char response[MAX_RESPONSE];
   sendCommand(host, port, ch, response);
   }*/
+GtkListStore * list_mess;
 char messlist[1000];
 static void getMessages() {
 	//char res[100];
@@ -141,11 +142,31 @@ static void getMessages() {
 	strcat(comm, room);
 	sendCommand(host,port,"GET-MESSAGES",strdup(user),strdup(pass), comm, messlist);
 	}
-	printf("%s",messlist);
+	//printf("%s",messlist);
 	//messag = create_text(messlist);
 	//gtk_table_attach_defaults (GTK_TABLE (table), messag, 2, 5, 0, 5);
 	//gtk_widget_show (messag);
 	free(comm);
+	GtkTreeIter iter;
+	int i;
+		
+		//if(res!=NULL)
+		//printf("%s", res);
+	//int j = 0;
+	char* ch = strtok(messlist, "\r\n");
+	while(ch!=NULL) {
+		//printf("%s\n", ch);
+		//ch = strtok(NULL, "\r\n");
+		gchar *msg = g_strdup_printf (ch);
+		gtk_list_store_append (GTK_LIST_STORE (list_mess), &iter);
+		gtk_list_store_set (GTK_LIST_STORE (list_mess),
+				&iter,
+				0, msg,
+				-1);
+		g_free (msg);
+		ch = strtok(NULL,"\r\n");
+
+	}
 }	
 	static gboolean
 time_handler(GtkWidget *widget)
@@ -167,6 +188,7 @@ time_handler(GtkWidget *widget)
 GtkListStore * list_rooms;
 GtkListStore * list_users;
 const char *user1;
+
 
 void update_list_rooms() {
 	//list_rooms = gtk_list_store_new(1,G_G_TYPE_STRING);
