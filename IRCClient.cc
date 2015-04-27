@@ -199,7 +199,7 @@ void update_list_rooms() {
 	GtkTreeIter iter;
 	int i;
 	char res[MAX_RESPONSE];
-	if(user!=NULL) {
+	if(user!=NULL&&pass!=NULL) {
 		sendCommand(host, port,"LIST-ROOMS", user, pass, "", res);	
 		//if(res!=NULL)
 		//printf("%s", res);
@@ -238,7 +238,7 @@ void update_list_users(){//GtkWidget * button, gpointer data) {
 	GtkTreeIter iter;
 	int i;
 	char res[MAX_RESPONSE];
-	if(user!=NULL)
+	if(user!=NULL&&pass!=NULL&&room!=NULL)
 		sendCommand(host, port,"GET-USERS-IN-ROOM", user, pass, room, res);
 	/* Add some messages to the window */
 	char* ch = strtok(res, "\r\n");
@@ -332,7 +332,8 @@ static GtkWidget *create_text( const char * initialText )
 static void croom_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	char *rname = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
-	printf("%s\n", rname);
+	//printf("%s\n", rname);
+	if(user!=NULL&&pass!=NULL&&rname!=NULL)
 	sendCommand(host,port,"CREATE-ROOM",strdup(user),strdup(pass), rname,res);
 
 }
