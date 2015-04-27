@@ -147,6 +147,7 @@ static void getMessages() {
 	//gtk_table_attach_defaults (GTK_TABLE (table), messag, 2, 5, 0, 5);
 	//gtk_widget_show (messag);
 	free(comm);
+	gtk_list_store_clear(list_mess);	
 	GtkTreeIter iter;
 	int i;
 		
