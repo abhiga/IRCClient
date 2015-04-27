@@ -141,7 +141,7 @@ static void getMessages() {
 	strcat(comm, room1);
 	sendCommand(host,port,"GET-MESSAGES",strdup(user),strdup(pass), comm, messlist);
 	}
-	//printf("%s",messlist);
+	printf("%s",messlist);
 	//messag = create_text(messlist);
 	//gtk_table_attach_defaults (GTK_TABLE (table), messag, 2, 5, 0, 5);
 	//gtk_widget_show (messag);
@@ -370,8 +370,8 @@ int main( int   argc,
 	GtkWidget *user1;
 	GtkWidget *pass;
 	//GtkWidget *entry;
-	/*gtk_init (&argc, &argv);
-	static bool display() {
+	gtk_init (&argc, &argv);
+	/*static bool display() {
 		messag = create_text (messlist);
 	    gtk_table_attach_defaults (GTK_TABLE (table), messag, 2, 5, 0, 5);
 	    gtk_widget_show (messag);
@@ -424,7 +424,7 @@ int main( int   argc,
 
 	// Add send button. Use columns 0 to 1 (exclusive) and rows 4 to 7 (exclusive)
 	GtkWidget *send_button = gtk_button_new_with_label ("Send Message");
-	//g_signal_connect(G_OBJECT(send_button), "clicked", G_CALLBACK(send_clicked),myMessage);
+	g_signal_connect(G_OBJECT(send_button), "clicked", G_CALLBACK(send_clicked),myMessage);
 	gtk_table_attach_defaults(GTK_TABLE (table), send_button, 0, 1, 5, 6); 
 	gtk_widget_show (send_button);
 
@@ -486,9 +486,9 @@ int main( int   argc,
 	gtk_widget_show_all(window);
 	time_handler(window);*/
 	
-	//g_timeout_add(5000, (GSourceFunc) time_handler, (gpointer) window);
-	//gtk_widget_show_all(window);
-	//time_handler(window);
+	g_timeout_add(5000, (GSourceFunc) time_handler, (gpointer) window);
+	gtk_widget_show_all(window);
+	time_handler(window);
 
 
 
