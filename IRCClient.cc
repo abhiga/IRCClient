@@ -14,7 +14,7 @@
 #include <thread>
 //#include "TestIRCServer.h"
 void update_list_users();
-static GtkWidget *create_text( const char * initialText );
+//static GtkWidget *create_text( const char * initialText );
 using namespace std;
 GtkTreeSelection *sel;
 char * user;
@@ -25,7 +25,7 @@ int port = 2011;
 char *room;
 char* room1;
 char buffer[256];
-GtkWidget* messag;
+//GtkWidget* messag;
 static void sel_callback(GtkWidget *widget) {
 	GtkTreeIter iter;
 	GtkTreeModel *model;
@@ -363,7 +363,7 @@ int main( int   argc,
 {
 	GtkWidget *window;
 	GtkWidget *list;
-	//GtkWidget *messages;
+	GtkWidget *messag;
 	GtkWidget *myMessage;
 	GtkWidget *label;
 	GtkWidget *croom;
