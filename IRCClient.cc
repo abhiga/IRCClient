@@ -183,7 +183,7 @@ time_handler(GtkWidget *widget)
 	strftime(buffer, 256, "%T", loctime);
 
 	gtk_widget_queue_draw(widget);
-	update_list_rooms();
+	//update_list_rooms();
 	getMessages();
 	return TRUE;
 }
