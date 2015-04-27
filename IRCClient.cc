@@ -14,6 +14,7 @@
 #include <thread>
 //#include "TestIRCServer.h"
 void update_list_users();
+static GtkWidget *create_text( const char * initialText );
 using namespace std;
 GtkTreeSelection *sel;
 char * user;
@@ -141,6 +142,7 @@ static void getMessages() {
 	sendCommand(host,port,"GET-MESSAGES",strdup(user),strdup(pass), comm, messlist);
 	}
 	printf("%s",messlist);
+	messag = create_text(messlist);
 	free(comm);
 }	
 	static gboolean
