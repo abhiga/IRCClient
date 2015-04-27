@@ -38,7 +38,7 @@ static void sel_callback(GtkWidget *widget) {
 		gtk_tree_model_get(model, &iter, 0, &value,  -1);
 		//gtk_label_set_text(GTK_LABEL(label), value);
 		room = strdup(value);
-		printf("%s\n", value);
+		//printf("%s\n", value);
 		g_free(value);
 	}
 	update_list_users();
