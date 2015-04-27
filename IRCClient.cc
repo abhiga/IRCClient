@@ -341,6 +341,7 @@ static void signup_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	pass = (char*)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s-%s\n", user, pass);
+	if(user!=NULL&&pass!=NULL)
 	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "",res);
 	//printf("%s",res);
 }
@@ -348,6 +349,7 @@ static void signin_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user);
+	if(user!=NULL&&pass!=NULL)
 	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);
 }
 static void leave_clicked(){
