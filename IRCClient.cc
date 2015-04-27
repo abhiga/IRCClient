@@ -22,6 +22,7 @@ char * host ="127.0.0.1";
 char * sport;
 int port = 2012;
 char *room;
+char* room1;
 char buffer[256];
 
 static void sel_callback(GtkWidget *widget) {
@@ -133,9 +134,14 @@ char messlist[1000];
 static void getMessages() {
 	//char res[100];
 	printf("Yeah\n");
-	//char *comm = (char*)malloc(100*sizeof(char));
-	//sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
-	
+	char *comm = (char*)malloc(100*sizeof(char));
+	if(room1!=NULL&&user!=NULL&&pass!=NULL){
+	strcpy(comm, "0 ");
+	strcat(comm, room1);
+	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), comm, messlist);
+	}
+	printf("%s",messlist);
+	free(comm);
 }	
 	static gboolean
 time_handler(GtkWidget *widget)
@@ -314,6 +320,7 @@ static void signin_clicked(GtkWidget *button, gpointer data){
 	sendCommand(host,port,"ADD-USER",strdup(user),strdup(pass), "", res);
 }
 static void leave_clicked(){
+	room1 = NULL;
 	char res[MAX_RESPONSE];
 	//pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user);
@@ -325,12 +332,13 @@ static void send_clicked(GtkWidget *button, gpointer data){
 	if(pass!=NULL)
 		printf("%s\n", pass);
 	char *ar = (char*) malloc(200*sizeof(char));
-	strcpy(ar,room);
+	strcpy(ar,room1);
 	strcat(ar, " ");
 	strcat(ar, mess);
 	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), ar, res);
 }
 static void enter_clicked(){//GtkWidget *button, gpointer data){
+	room1 = strdup(room);
 	char res[MAX_RESPONSE];
 	//pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user);
