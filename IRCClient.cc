@@ -463,8 +463,8 @@ int main( int   argc,
 
 	sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
 	g_signal_connect_swapped(tree_view, "row-activated", G_CALLBACK(sel_callback), sel);
-
-	g_timeout_add(500, (GSourceFunc) time_handler, (gpointer) window);
+	
+	g_timeout_add(5000, (GSourceFunc) time_handler, (gpointer) window);
 	gtk_widget_show_all(window);
 	time_handler(window);
 
