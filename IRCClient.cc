@@ -357,7 +357,7 @@ static void leave_clicked(){
 	char *ar = (char*) malloc(200*sizeof(char));
 	sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
 	strcpy(ar,room);
-	strcat(ar," entered room");
+	strcat(ar," left room");
 	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), ar, res);
 }
 static void send_clicked(GtkWidget *button, gpointer data){
@@ -376,7 +376,11 @@ static void enter_clicked(){//GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
 	//pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user);
+	char *ar = (char*) malloc(200*sizeof(char));
 	sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
+	strcpy(ar,room);
+	strcat(ar," entered room");
+	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), ar, res);
 }
 
 static void user_callback(GtkWidget *button, gpointer data) {
