@@ -141,7 +141,7 @@ static void getMessages() {
 	strcat(comm, room1);
 	sendCommand(host,port,"GET-MESSAGES",strdup(user),strdup(pass), comm, messlist);
 	}
-	printf("%s",messlist);
+	//printf("%s",messlist);
 	//messag = create_text(messlist);
 	//gtk_table_attach_defaults (GTK_TABLE (table), messag, 2, 5, 0, 5);
 	//gtk_widget_show (messag);
