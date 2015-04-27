@@ -138,7 +138,7 @@ static void getMessages() {
 	if(room1!=NULL&&user!=NULL&&pass!=NULL){
 	strcpy(comm, "0 ");
 	strcat(comm, room1);
-	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), comm, messlist);
+	sendCommand(host,port,"GET-MESSAGES",strdup(user),strdup(pass), comm, messlist);
 	}
 	printf("%s",messlist);
 	free(comm);
