@@ -370,7 +370,13 @@ int main( int   argc,
 	GtkWidget *user1;
 	GtkWidget *pass;
 	//GtkWidget *entry;
-	gtk_init (&argc, &argv);
+	/*gtk_init (&argc, &argv);
+	static bool display() {
+		messag = create_text (messlist);
+	    gtk_table_attach_defaults (GTK_TABLE (table), messag, 2, 5, 0, 5);
+	    gtk_widget_show (messag);
+		return true;
+	}*/
 	//label = gtk_label_new("Username");
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title (GTK_WINDOW (window), "IRC Client");
@@ -475,6 +481,10 @@ int main( int   argc,
 
 	sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
 	g_signal_connect_swapped(tree_view, "row-activated", G_CALLBACK(sel_callback), sel);
+	
+	/*g_timeout_add(500, (GSourceFunc) display, (gpointer) window);
+	gtk_widget_show_all(window);
+	time_handler(window);*/
 	
 	g_timeout_add(5000, (GSourceFunc) time_handler, (gpointer) window);
 	gtk_widget_show_all(window);
