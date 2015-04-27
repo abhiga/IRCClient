@@ -14,6 +14,7 @@
 #include <thread>
 //#include "TestIRCServer.h"
 void update_list_users();
+void update_list_rooms();
 //static GtkWidget *create_text( const char * initialText );
 using namespace std;
 GtkTreeSelection *sel;
@@ -182,6 +183,7 @@ time_handler(GtkWidget *widget)
 	strftime(buffer, 256, "%T", loctime);
 
 	gtk_widget_queue_draw(widget);
+	update_list_rooms();
 	getMessages();
 	return TRUE;
 }
@@ -193,6 +195,7 @@ const char *user1;
 
 void update_list_rooms() {
 	//list_rooms = gtk_list_store_new(1,G_G_TYPE_STRING);
+	gtk_list_store_clear(list_rooms);
 	GtkTreeIter iter;
 	int i;
 	char res[MAX_RESPONSE];
