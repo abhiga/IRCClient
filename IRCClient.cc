@@ -136,7 +136,7 @@ GtkListStore * list_mess;
 char messlist[1000];
 static void getMessages() {
 	//char res[100];
-	printf("Yeah\n");
+	//printf("Yeah\n");
 	char *comm = (char*)malloc(100*sizeof(char));
 	if(room!=NULL&&user!=NULL&&pass!=NULL){
 	strcpy(comm, "0 ");
