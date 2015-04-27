@@ -357,16 +357,18 @@ static void leave_clicked(){
 	char res[MAX_RESPONSE];
 	//pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user);
+	if(user!=NULL&&pass!=NULL&&room!=NULL) {
 	char *ar = (char*) malloc(200*sizeof(char));
 	//sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
 	strcpy(ar,room);
 	strcat(ar," left room");
 	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), ar, res);
 	sendCommand(host,port,"LEAVE-ROOM",strdup(user),strdup(pass), room, res);
-	
+	}
 }
 static void send_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
+
 	char *mess = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	if(pass!=NULL)
 		printf("%s\n", pass);
