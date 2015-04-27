@@ -24,7 +24,7 @@ int port = 2011;
 char *room;
 char* room1;
 char buffer[256];
-
+GtkWidget* messag;
 static void sel_callback(GtkWidget *widget) {
 	GtkTreeIter iter;
 	GtkTreeModel *model;
@@ -359,7 +359,7 @@ int main( int   argc,
 {
 	GtkWidget *window;
 	GtkWidget *list;
-	GtkWidget *messages;
+	//GtkWidget *messages;
 	GtkWidget *myMessage;
 	GtkWidget *label;
 	GtkWidget *croom;
@@ -402,9 +402,9 @@ int main( int   argc,
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,6,7);
 	gtk_widget_show(label);
 	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
-	messages = create_text ("Server Message List");
-	gtk_table_attach_defaults (GTK_TABLE (table), messages, 2, 5, 0, 5);
-	gtk_widget_show (messages);
+	messag = create_text ("Server Message List");
+	gtk_table_attach_defaults (GTK_TABLE (table), messag, 2, 5, 0, 5);
+	gtk_widget_show (messag);
 	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
 
 	//myMessage = create_text ("Type your message here.");
