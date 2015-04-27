@@ -18,7 +18,7 @@ void update_list_rooms();
 //static GtkWidget *create_text( const char * initialText );
 using namespace std;
 GtkTreeSelection *sel;
-char * user = "abhiga";
+char * user;
 char * pass;
 char * host ="127.0.0.1";
 char * sport;
