@@ -23,7 +23,7 @@ char * host ="127.0.0.1";
 char * sport;
 int port = 2011;
 char *room;
-char* room1;
+//char* room1;
 char buffer[256];
 //GtkWidget* messag;
 static void sel_callback(GtkWidget *widget) {
