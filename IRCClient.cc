@@ -368,7 +368,7 @@ static void leave_clicked(){
 }
 static void send_clicked(GtkWidget *button, gpointer data){
 	char res[MAX_RESPONSE];
-
+	if(user!=NULL&&pass!=NULL&&room!=NULL) {
 	char *mess = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	if(pass!=NULL)
 		printf("%s\n", pass);
@@ -377,18 +377,19 @@ static void send_clicked(GtkWidget *button, gpointer data){
 	strcat(ar, " ");
 	strcat(ar, mess);
 	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), ar, res);
-}
+}}
 static void enter_clicked(){//GtkWidget *button, gpointer data){
 	//room1 = strdup(room);
 	char res[MAX_RESPONSE];
 	//pass = (char *)gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
 	//printf("%s\n", user);
+	if(user!=NULL&&pass!=NULL&&room!=NULL){
 	char *ar = (char*) malloc(200*sizeof(char));
 	sendCommand(host,port,"ENTER-ROOM",strdup(user),strdup(pass), room, res);
 	strcpy(ar,room);
 	strcat(ar," entered room");
 	sendCommand(host,port,"SEND-MESSAGE",strdup(user),strdup(pass), ar, res);
-}
+}}
 
 static void user_callback(GtkWidget *button, gpointer data) {
 	user = (char*) gtk_entry_get_text(GTK_ENTRY((GtkWidget *)data));
