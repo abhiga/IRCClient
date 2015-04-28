@@ -402,7 +402,9 @@ static void list_clicked() {
 
 int main( int   argc,
 		char *argv[] )
-{
+{	
+	host = strdup(argv[1]);
+	port = atoi(argv[2]);
 	GtkWidget *window;
 	GtkWidget *list;
 	GtkWidget *messag;
