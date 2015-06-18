@@ -492,56 +492,37 @@ int main( int   argc,
 	gtk_widget_show (croom);
 
 	user1 = gtk_entry_new ();
-	g_signal_connect(user1, "activate", G_CALLBACK(user_callback),user1);
-	//user1 = gtk_entry_get_text(GTK_ENTRY((GtkWidget *)user));
-	gtk_table_attach_defaults(GTK_TABLE (table), user1, 3,4, 5, 6);
+	g_signal_connect(user1, "activate", G_CALLBACK(user_callback),user1);gtk_table_attach_defaults(GTK_TABLE (table), user1, 3,4, 5, 6);
 	gtk_widget_show (user1);
-
 	pass = gtk_entry_new ();
 	gtk_entry_set_visibility(GTK_ENTRY(pass), FALSE);
 	gtk_table_attach_defaults(GTK_TABLE (table), pass, 3,4, 6, 7);
 	gtk_widget_show (pass);
-
 	GtkWidget *leave_room = gtk_button_new_with_label ("Leave Room");
 	g_signal_connect(G_OBJECT(leave_room), "clicked", G_CALLBACK(leave_clicked),NULL);
 	gtk_table_attach_defaults(GTK_TABLE (table), leave_room, 1, 2, 2, 3);
 	gtk_widget_show (leave_room);
-
 	GtkWidget *enter_room = gtk_button_new_with_label ("Enter Room");
 	g_signal_connect(G_OBJECT(enter_room), "clicked", G_CALLBACK(enter_clicked),NULL);
 	gtk_table_attach_defaults(GTK_TABLE (table), enter_room,0, 1, 2, 3);
-	//gtk_table_attach_defaults(GTK_TABLE (table),"clicked", G_CALLBACK(enter_clicked), 0,1,2,3);
 	gtk_widget_show (enter_room);
-
 	GtkWidget *list_rooms = gtk_button_new_with_label ("List Rooms");
 	g_signal_connect(G_OBJECT(list_rooms), "clicked", G_CALLBACK(list_clicked),NULL);
 	gtk_table_attach_defaults(GTK_TABLE (table), list_rooms, 1, 2, 5,6);
 	gtk_widget_show (list_rooms);
-
-
 	GtkWidget *sign_up = gtk_button_new_with_label ("Sign Up");
 	g_signal_connect(G_OBJECT(sign_up), "clicked", G_CALLBACK(signup_clicked),pass);
 	gtk_table_attach_defaults(GTK_TABLE (table), sign_up, 4,5, 5,6);
 	gtk_widget_show (sign_up);
-
 	GtkWidget *sign_in = gtk_button_new_with_label ("Sign In");
 	g_signal_connect(G_OBJECT(sign_in), "clicked", G_CALLBACK(signin_clicked),pass);
 	gtk_table_attach_defaults(GTK_TABLE (table), sign_in, 4,5, 6,7);
 	gtk_widget_show (sign_in);
-
 	sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(tree_view));
 	g_signal_connect_swapped(tree_view, "row-activated", G_CALLBACK(sel_callback), sel);
-	
-	/*g_timeout_add(500, (GSourceFunc) display, (gpointer) window);
-	gtk_widget_show_all(window);
-	time_handler(window);*/
-	
 	g_timeout_add(5000, (GSourceFunc) time_handler, (gpointer) window);
 	gtk_widget_show_all(window);
 	time_handler(window);
-
-
-
 	gtk_widget_show (table);
 	gtk_widget_show (window);
 
