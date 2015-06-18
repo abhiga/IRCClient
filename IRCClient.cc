@@ -454,43 +454,23 @@ int main( int   argc,
 	list = create_list ("Rooms", list_rooms);
 	gtk_table_attach_defaults (GTK_TABLE (table), list, 1,2, 0, 2);
 	gtk_widget_show (list);
-
 	label = gtk_label_new("Username");
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,5,6);
 	gtk_widget_show(label);
 	label = gtk_label_new("Password");
 	gtk_table_attach_defaults(GTK_TABLE(table), label, 2,3,6,7);
 	gtk_widget_show(label);
-	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
-	/*messag = create_text ("Server Message List");
-	gtk_table_attach_defaults (GTK_TABLE (table), messag, 2, 5, 0, 5);
-	gtk_widget_show (messag);*/
-	// Add messages text. Use columns 0 to 4 (exclusive) and rows 4 to 7 (exclusive) 
-
-	//myMessage = create_text ("Type your message here.");
 	myMessage = gtk_entry_new();
-	gtk_table_attach_defaults (GTK_TABLE (table), myMessage, 0, 2, 3, 5);
-	gtk_widget_show (myMessage);
-
-	// Add send button. Use columns 0 to 1 (exclusive) and rows 4 to 7 (exclusive)
+	gtk_table_attach_defaults (GTK_TABLE (table), myMessage, 0, 2, 3, 5);gtk_widget_show (myMessage);
 	GtkWidget *send_button = gtk_button_new_with_label ("Send Message");
 	g_signal_connect(G_OBJECT(send_button), "clicked", G_CALLBACK(send_clicked),myMessage);
-	gtk_table_attach_defaults(GTK_TABLE (table), send_button, 0, 1, 5, 6); 
-	gtk_widget_show (send_button);
-
+	gtk_table_attach_defaults(GTK_TABLE (table), send_button, 0, 1, 5, 6); gtk_widget_show (send_button);
 	GtkWidget *create_room = gtk_button_new_with_label ("Create Room");
-	gtk_table_attach_defaults(GTK_TABLE (table), create_room, 0, 1, 6,7);
-	gtk_widget_show (create_room);
-
+	gtk_table_attach_defaults(GTK_TABLE (table), create_room, 0, 1, 6,7);gtk_widget_show (create_room);
 	croom = gtk_entry_new ();
-	//gtk_entry_set_max_length (GTK_ENTRY (croom), 50);
-	//g_signal_connect (croom, "activate",
-	//G_CALLBACK (entry_callback),
-	//croom);
 	g_signal_connect(G_OBJECT(create_room), "clicked", G_CALLBACK(croom_clicked),croom);
 	gtk_table_attach_defaults(GTK_TABLE (table), croom, 1,2, 6, 7);
 	gtk_widget_show (croom);
-
 	user1 = gtk_entry_new ();
 	g_signal_connect(user1, "activate", G_CALLBACK(user_callback),user1);gtk_table_attach_defaults(GTK_TABLE (table), user1, 3,4, 5, 6);
 	gtk_widget_show (user1);
